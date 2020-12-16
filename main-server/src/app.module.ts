@@ -5,6 +5,7 @@ import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import { UsersModule } from './users/users.module';
+import {Connection} from "typeorm";
 
 @Module({
   imports: [TypeOrmModule.forRoot(), UsersModule],
@@ -12,6 +13,8 @@ import { UsersModule } from './users/users.module';
   providers: [AppService],
 })
 export class AppModule implements NestModule {
+  constructor(private readonly connection: Connection) {}
+
   configure(consumer: MiddlewareConsumer): any {
     consumer.apply(helmet(), morgan('dev')).forRoutes('/')
   }
