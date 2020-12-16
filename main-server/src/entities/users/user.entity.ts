@@ -1,8 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { EntityHelper } from '../entity';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('users')
-export class UserEntity extends EntityHelper {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,4 +20,13 @@ export class UserEntity extends EntityHelper {
 
   @Column({ type: 'varchar', nullable: false, length: 255 })
   password: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @DeleteDateColumn()
+  deleted_at?: Date;
 }
