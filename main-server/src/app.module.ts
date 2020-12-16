@@ -3,9 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
+import {TypeOrmModule} from "@nestjs/typeorm";
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forRoot()],
   controllers: [AppController],
   providers: [AppService],
 })
