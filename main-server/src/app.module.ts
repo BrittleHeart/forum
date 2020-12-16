@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import {TypeOrmModule} from "@nestjs/typeorm";
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot()],
+  imports: [TypeOrmModule.forRoot(), UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
