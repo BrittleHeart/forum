@@ -9,6 +9,7 @@ import { Repository } from 'typeorm';
 import { QueryService } from '@nestjs-query/core';
 import { TypeOrmQueryService } from '@nestjs-query/query-typeorm';
 import { UserInterface } from '../interfaces/user.interface';
+import { CreateUserDto } from './dto/create-user-dto';
 
 @Injectable()
 @QueryService(UserEntity)
@@ -50,5 +51,11 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
       throw new NotFoundException(`User with id = ${id} does not exist`);
 
     return user;
+  }
+
+  async store(
+    userData: CreateUserDto,
+  ): Promise<UserInterface | BadRequestException> {
+    return this.userRepository.save(userData);
   }
 }

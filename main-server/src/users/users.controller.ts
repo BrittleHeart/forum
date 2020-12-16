@@ -1,13 +1,18 @@
 import {
   BadRequestException,
+  Body,
   Controller,
   Get,
   NotFoundException,
   Param,
   ParseIntPipe,
+  Post,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserInterface } from '../interfaces/user.interface';
+import { CreateUserDto } from './dto/create-user-dto';
 
 @Controller('users')
 export class UsersController {
@@ -23,5 +28,13 @@ export class UsersController {
     @Param('id', ParseIntPipe) id: number,
   ): Promise<UserInterface | NotFoundException | BadRequestException> {
     return this.usersService.show(id);
+  }
+
+  @Post()
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async store(
+    @Body() userDto: CreateUserDto,
+  ): Promise<UserInterface | BadRequestException> {
+    return this.usersService.store(userDto);
   }
 }
