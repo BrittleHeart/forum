@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Injectable,
+  InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -10,6 +11,7 @@ import { QueryService } from '@nestjs-query/core';
 import { TypeOrmQueryService } from '@nestjs-query/query-typeorm';
 import { UserInterface } from '../interfaces/user.interface';
 import { CreateUserDto } from './dto/create-user-dto';
+import { hash, genSalt } from 'bcrypt';
 
 @Injectable()
 @QueryService(UserEntity)
@@ -55,7 +57,19 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
 
   async store(
     userData: CreateUserDto,
-  ): Promise<UserInterface | BadRequestException> {
+  ): Promise<
+    UserInterface | BadRequestException | InternalServerErrorException
+  > {
+    const salt: string = await genSalt(10);
+    if (!salt)
+      throw new InternalServerErrorException('Could not generate salt');
+
+    const password_salt: string = await hash(userData.password, salt);
+    if (!password_salt)
+      throw new InternalServerErrorException('Could not make hash');
+
+    userData.password = password_salt;
+
     return this.userRepository.save(userData);
   }
 }

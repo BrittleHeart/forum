@@ -3,6 +3,7 @@ import {
   Body,
   Controller,
   Get,
+  InternalServerErrorException,
   NotFoundException,
   Param,
   ParseIntPipe,
@@ -34,7 +35,9 @@ export class UsersController {
   @UsePipes(new ValidationPipe({ transform: true }))
   async store(
     @Body() userDto: CreateUserDto,
-  ): Promise<UserInterface | BadRequestException> {
+  ): Promise<
+    UserInterface | BadRequestException | InternalServerErrorException
+  > {
     return this.usersService.store(userDto);
   }
 }
