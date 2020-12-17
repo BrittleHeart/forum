@@ -60,7 +60,9 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
   ): Promise<
     UserInterface | BadRequestException | InternalServerErrorException
   > {
-    const existing = this.userRepository.findOne({ email: userData.email });
+    const existing = await this.userRepository.findOne({
+      email: userData.email,
+    });
     if (existing)
       throw new BadRequestException(
         `User with email = ${userData.email} already exists`,
