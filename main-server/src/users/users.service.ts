@@ -60,6 +60,12 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
   ): Promise<
     UserInterface | BadRequestException | InternalServerErrorException
   > {
+    const existing = this.userRepository.findOne({ email: userData.email });
+    if (existing)
+      throw new BadRequestException(
+        `User with email = ${userData.email} already exists`,
+      );
+
     const salt: string = await genSalt(10);
     if (!salt)
       throw new InternalServerErrorException('Could not generate salt');
@@ -68,7 +74,7 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
     if (!password_salt)
       throw new InternalServerErrorException('Could not make hash');
 
-    userData.password = password_salt;
+    userData.password = password_salt.trim();
 
     return this.userRepository.save(userData);
   }
