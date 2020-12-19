@@ -55,7 +55,7 @@ export class ProfilesController {
     return this.profileService.update(id, updateProfileDto);
   }
 
-  @Delete()
+  @Delete(':id')
   @UseGuards(JWTAuthGuard)
   async destroy(@Param('id') id: number): Promise<void | BadRequestException> {
     return this.profileService.destroy(id);
