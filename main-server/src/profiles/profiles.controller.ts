@@ -45,7 +45,7 @@ export class ProfilesController {
     return this.profileService.store(createProfileDto);
   }
 
-  @Put()
+  @Put(':id')
   @UseGuards(JWTAuthGuard)
   @UsePipes(new ValidationPipe({ transform: true }))
   async update(
