@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class ProfileEntity {
@@ -16,4 +23,19 @@ export class ProfileEntity {
 
   @Column({ type: 'varchar', length: 50, nullable: false })
   city: string;
+
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  homepage: string;
+
+  @Column({ type: 'text', nullable: true })
+  info: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
 }
