@@ -21,7 +21,7 @@ export class ProfileEntity {
   @Column({ type: 'varchar', length: 120, nullable: false })
   last_name: string;
 
-  @Column({ type: 'varchar', length: 50, nullable: false })
+  @Column({ type: 'varchar', length: 50, nullable: true })
   city: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
