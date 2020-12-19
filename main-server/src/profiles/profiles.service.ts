@@ -6,7 +6,7 @@ import {
 import { TypeOrmQueryService } from '@nestjs-query/query-typeorm';
 import { ProfileEntity } from '../entities/profiles/profile.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { ProfileInterface } from '../interfaces/profile.interface';
 import { CreateProfileDto } from './dto/create-profile-dto';
 
@@ -41,5 +41,22 @@ export class ProfilesService extends TypeOrmQueryService<ProfileEntity> {
     profileData: CreateProfileDto,
   ): Promise<ProfileInterface | BadRequestException> {
     return await this.profileRepository.save(profileData);
+  }
+
+  async update(
+    id: number,
+    profileData: CreateProfileDto,
+  ): Promise<ProfileInterface | UpdateResult | BadRequestException> {
+    return await this.profileRepository.update({ id }, profileData);
+  }
+
+  async destroy(id: number): Promise<void | BadRequestException> {
+    if (!id || isNaN(id)) throw new BadRequestException('Id param must exists');
+
+    const profile_to_delete = await this.profileRepository.findOne({ id });
+    if (!profile_to_delete)
+      throw new BadRequestException(`Could not find profile with id = ${id}`);
+
+    await this.profileRepository.delete({ id });
   }
 }

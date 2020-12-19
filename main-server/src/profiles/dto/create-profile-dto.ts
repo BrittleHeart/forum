@@ -22,13 +22,13 @@ export class CreateProfileDto {
   readonly avatar_url: string;
 
   @IsString()
-  @MinLength(45)
+  @MinLength(3)
   @MaxLength(255)
   @IsNotEmpty()
   readonly first_name: string;
 
   @IsString()
-  @MinLength(45)
+  @MinLength(3)
   @MaxLength(255)
   @IsNotEmpty()
   readonly last_name: string;
