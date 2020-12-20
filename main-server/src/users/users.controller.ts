@@ -10,6 +10,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Req,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -39,13 +40,13 @@ export class UsersController {
   }
 
   @Post()
-  @UsePipes(new ValidationPipe({ transform: true }))
   async store(
     @Body() userDto: CreateUserDto,
+    @Req() req,
   ): Promise<
     UserInterface | BadRequestException | InternalServerErrorException
   > {
-    return this.usersService.store(userDto);
+    return await this.usersService.store(userDto, req);
   }
 
   @Put(':id')

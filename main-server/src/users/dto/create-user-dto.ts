@@ -1,15 +1,23 @@
 import {
   IsDate,
   IsEmail,
+  IsInt,
   IsNotEmpty,
   IsOptional,
+  IsPositive,
   IsString,
   Matches,
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { ProfileEntity } from '../../entities/profiles/profile.entity';
 
 export class CreateUserDto {
+  @IsInt()
+  @IsPositive()
+  @IsNotEmpty()
+  profile: ProfileEntity;
+
   @IsString()
   @MinLength(3)
   @MaxLength(45)
