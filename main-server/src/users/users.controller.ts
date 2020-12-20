@@ -8,6 +8,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Put,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -16,6 +17,8 @@ import { UsersService } from './users.service';
 import { UserInterface } from '../interfaces/user.interface';
 import { CreateUserDto } from './dto/create-user-dto';
 import { JWTAuthGuard } from '../auth/jwt.guard';
+import { UpdateUserDto } from './dto/update-user-dto';
+import { UpdateResult } from 'typeorm';
 
 @Controller('users')
 export class UsersController {
@@ -42,5 +45,20 @@ export class UsersController {
     UserInterface | BadRequestException | InternalServerErrorException
   > {
     return this.usersService.store(userDto);
+  }
+
+  @Put(':id')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async update(
+    @Param('id') id: number,
+    @Body() updateUserDto: UpdateUserDto,
+  ): Promise<
+    | UpdateResult
+    | UserInterface
+    | NotFoundException
+    | BadRequestException
+    | InternalServerErrorException
+  > {
+    return await this.usersService.update(id, updateUserDto);
   }
 }

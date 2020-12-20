@@ -18,7 +18,7 @@ export class UpdateUserDto {
   @MinLength(8, { message: 'Password must be at least 8 characters long' })
   @MaxLength(255, { message: 'Password length must me less or equal 255' })
   @IsNotEmpty()
-  readonly password;
+  password: string;
 
   @IsDate({ message: 'Created at column must be a date' })
   @IsOptional()
