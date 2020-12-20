@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   InternalServerErrorException,
   NotFoundException,
@@ -60,5 +61,12 @@ export class UsersController {
     | InternalServerErrorException
   > {
     return await this.usersService.update(id, updateUserDto);
+  }
+
+  @Delete(':id')
+  async destroy(
+    @Param('id') id: number,
+  ): Promise<void | BadRequestException | NotFoundException> {
+    return await this.usersService.destroy(id);
   }
 }

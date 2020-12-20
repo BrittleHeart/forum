@@ -193,4 +193,21 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
     updateUserDto.password = hashed_password;
     return await this.userRepository.update({ id }, updateUserDto);
   }
+
+  /**
+   * Soft deleting user from database.
+   *
+   * @param {number} id
+   * @returns Promise<void | BadRequestException | NotFoundException>
+   */
+  async destroy(
+    id: number,
+  ): Promise<void | BadRequestException | NotFoundException> {
+    if (!id || isNaN(id)) throw new BadRequestException('Id param must exists');
+    const user: UserInterface = await this.userRepository.findOne({ id });
+    if (!user)
+      throw new NotFoundException(`Could not find user with id = ${id}`);
+
+    await this.userRepository.softDelete({ id });
+  }
 }
