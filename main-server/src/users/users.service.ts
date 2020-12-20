@@ -31,7 +31,7 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
    * @returns UserInterface[] | NotFoundException
    */
   async index(): Promise<UserInterface[] | NotFoundException> {
-    const users = await this.userRepository.find();
+    const users: UserInterface[] = await this.userRepository.find();
     if (users.length === 0)
       throw new NotFoundException('Could not find any users');
 
@@ -50,7 +50,7 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
     if (!id || isNaN(id))
       throw new BadRequestException('id param must be an integer');
 
-    const user = await this.userRepository.findOne({ id });
+    const user: UserInterface = await this.userRepository.findOne({ id });
     if (!user)
       throw new NotFoundException(`User with id = ${id} does not exist`);
 
@@ -72,7 +72,7 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
       Lets check if user with follow email already exists in database
       If so, don't let the user create his account
      */
-    const existing = await this.userRepository.findOne({
+    const existing: UserInterface = await this.userRepository.findOne({
       email: createUserDto.email,
     });
     if (existing)
