@@ -15,7 +15,7 @@ import { compare } from 'bcrypt';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { hashPassword } from '../utils';
 import { ProfileEntity } from '../entities/profiles/profile.entity';
-import { Request } from 'express';
+import { CreateProfileDto } from '../profiles/dto/create-profile-dto';
 
 @Injectable()
 @QueryService(UserEntity)
@@ -65,31 +65,15 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
    * Creates new user
    *
    * @param {CreateUserDto} createUserDto
-   * @param req
+   * @param createProfileDto
    * @returns Promise<UserInterface | BadRequestException | InternalServerErrorException>
    */
   async store(
     createUserDto: CreateUserDto,
-    req: Request,
+    createProfileDto: CreateProfileDto,
   ): Promise<
     UserInterface | BadRequestException | InternalServerErrorException
   > {
-    const {
-      avatar_url,
-      first_name,
-      last_name,
-      city,
-      homepage,
-      info,
-    } = req.body;
-    const profile = new ProfileEntity();
-    profile.avatar_url = avatar_url;
-    profile.first_name = first_name;
-    profile.last_name = last_name;
-    profile.city = city;
-    profile.homepage = homepage;
-    profile.info = info;
-    await this.profileRepository.save(profile);
     /*
       Lets check if user with follow email already exists in database
       If so, don't let the user create his account
@@ -111,6 +95,15 @@ export class UsersService extends TypeOrmQueryService<UserEntity> {
     );
     if (hashed_password === undefined)
       throw new InternalServerErrorException('Could not hash password');
+
+    const profile = new ProfileEntity();
+    profile.avatar_url = createProfileDto.avatar_url;
+    profile.first_name = createProfileDto.first_name;
+    profile.last_name = createProfileDto.last_name;
+    profile.city = createProfileDto.city;
+    profile.homepage = createProfileDto.homepage;
+    profile.info = createProfileDto.info;
+    await this.profileRepository.save(profile);
 
     createUserDto.password = hashed_password.trim();
     createUserDto.profile = profile;

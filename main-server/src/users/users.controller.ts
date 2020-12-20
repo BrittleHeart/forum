@@ -10,7 +10,6 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  Req,
   UseGuards,
   UsePipes,
   ValidationPipe,
@@ -21,6 +20,7 @@ import { CreateUserDto } from './dto/create-user-dto';
 import { JWTAuthGuard } from '../auth/jwt.guard';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { UpdateResult } from 'typeorm';
+import { CreateProfileDto } from '../profiles/dto/create-profile-dto';
 
 @Controller('users')
 export class UsersController {
@@ -40,13 +40,14 @@ export class UsersController {
   }
 
   @Post()
+  @UsePipes(new ValidationPipe({ transform: true }))
   async store(
-    @Body() userDto: CreateUserDto,
-    @Req() req,
+    @Body() createUserDto: CreateUserDto,
+    @Body() createProfileDto: CreateProfileDto,
   ): Promise<
     UserInterface | BadRequestException | InternalServerErrorException
   > {
-    return await this.usersService.store(userDto, req);
+    return await this.usersService.store(createUserDto, createProfileDto);
   }
 
   @Put(':id')

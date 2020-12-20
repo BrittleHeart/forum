@@ -1,10 +1,8 @@
 import {
   IsDate,
   IsEmail,
-  IsInt,
   IsNotEmpty,
   IsOptional,
-  IsPositive,
   IsString,
   Matches,
   MaxLength,
@@ -13,9 +11,6 @@ import {
 import { ProfileEntity } from '../../entities/profiles/profile.entity';
 
 export class CreateUserDto {
-  @IsInt()
-  @IsPositive()
-  @IsNotEmpty()
   profile: ProfileEntity;
 
   @IsString()
