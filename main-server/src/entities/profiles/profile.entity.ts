@@ -1,14 +1,8 @@
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { GenericClass } from '../GenericClass';
 
 @Entity('profiles')
-export class ProfileEntity {
+export class ProfileEntity extends GenericClass {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -29,13 +23,4 @@ export class ProfileEntity {
 
   @Column({ type: 'text', nullable: true })
   info: string;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
-
-  @DeleteDateColumn()
-  deleted_at: Date;
 }

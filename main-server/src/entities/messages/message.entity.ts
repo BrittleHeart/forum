@@ -1,16 +1,14 @@
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { UserEntity } from '../users/user.entity';
+import { GenericClass } from '../GenericClass';
 
 @Entity('messages')
-export class MessageEntity {
+export class MessageEntity extends GenericClass {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -23,15 +21,6 @@ export class MessageEntity {
   @Column({ type: 'varchar', length: 45, nullable: false })
   topic: string;
 
-  @Column({ type: 'text', nullable: false, length: 5000 })
+  @Column({ type: 'text', nullable: false })
   message: string;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
-
-  @DeleteDateColumn()
-  deleted_at: Date;
 }
