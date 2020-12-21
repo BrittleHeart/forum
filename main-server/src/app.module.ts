@@ -7,10 +7,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfilesModule } from './profiles/profiles.module';
-import { FriendsModule } from './friends/friends.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UsersModule, AuthModule, ProfilesModule, FriendsModule],
+  imports: [TypeOrmModule.forRoot(), UsersModule, AuthModule, ProfilesModule],
   controllers: [AppController],
   providers: [AppService],
 })
