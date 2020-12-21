@@ -15,7 +15,7 @@ export class UserEntity extends GenericClass {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => ProfileEntity)
+  @OneToOne(() => ProfileEntity, { onUpdate: 'CASCADE', onDelete: 'CASCADE' })
   @JoinColumn()
   profile: ProfileEntity;
 

@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { UserEntity } from '../users/user.entity';
 import { GenericClass } from '../GenericClass';
 
@@ -11,6 +17,7 @@ export class MessageEntity extends GenericClass {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
+  @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 
   @Column({ type: 'varchar', length: 45, nullable: false })
