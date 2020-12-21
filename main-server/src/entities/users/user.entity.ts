@@ -21,7 +21,10 @@ export class UserEntity {
   @JoinColumn()
   profile: ProfileEntity;
 
-  @OneToMany(() => MessageEntity, (message: MessageEntity) => message.user)
+  @OneToMany(() => MessageEntity, (message: MessageEntity) => message.user, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   messages: MessageEntity[];
 
   @Column({ type: 'varchar', nullable: false, length: 45 })
