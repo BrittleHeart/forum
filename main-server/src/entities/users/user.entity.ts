@@ -21,7 +21,7 @@ export class UserEntity {
   @JoinColumn()
   profile: ProfileEntity;
 
-  @OneToMany(() => MessageEntity, (message) => message.user)
+  @OneToMany(() => MessageEntity, (message: MessageEntity) => message.user)
   messages: MessageEntity[];
 
   @Column({ type: 'varchar', nullable: false, length: 45 })
