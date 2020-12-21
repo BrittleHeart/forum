@@ -21,7 +21,7 @@ export class MessagesService extends TypeOrmQueryService<MessageEntity> {
    */
   async index(): Promise<MessageInterface[] | NotFoundException> {
     const messages: MessageInterface[] = await this.messageRepository.find({
-      relations: ['user'],
+      relations: ['sentFrom', 'sentTo'],
     });
     if (!messages.length)
       throw new NotFoundException('Could not find any messages');

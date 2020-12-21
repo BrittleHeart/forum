@@ -17,8 +17,15 @@ export class MessageEntity extends GenericClass {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  @JoinColumn({ name: 'user_id' })
-  user: UserEntity;
+  @JoinColumn({ name: 'from_user_id' })
+  sentFrom: UserEntity;
+
+  @ManyToOne(() => UserEntity, (user: UserEntity) => user.messages, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn({ name: 'to_user_id' })
+  sentTo: UserEntity;
 
   @Column({ type: 'varchar', length: 45, nullable: false })
   topic: string;

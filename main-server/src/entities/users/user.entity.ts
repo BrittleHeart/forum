@@ -19,10 +19,14 @@ export class UserEntity extends GenericClass {
   @JoinColumn()
   profile: ProfileEntity;
 
-  @OneToMany(() => MessageEntity, (message: MessageEntity) => message.user, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-  })
+  @OneToMany(
+    () => MessageEntity,
+    (message: MessageEntity) => message.sentFrom,
+    {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+  )
   messages: MessageEntity[];
 
   @Column({ type: 'varchar', nullable: false, length: 45 })
