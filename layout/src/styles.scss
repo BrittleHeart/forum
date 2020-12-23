@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+router-outlet + * {
+  padding: 0 16px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(6, 140, 243);
+
+  &:hover {opacity: 0.8;}
+}
