@@ -13,6 +13,6 @@ export class CategoryComponent implements OnInit {
   constructor(private readonly categoryService: CategoryService) {}
 
   ngOnInit(): void {
-    this.categories = this.categoryService.selectAllCategories();
+    this.categories = this.categoryService.selectAll();
   }
 }

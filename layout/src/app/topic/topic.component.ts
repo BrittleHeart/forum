@@ -13,6 +13,6 @@ export class TopicComponent implements OnInit {
   constructor(private readonly topicsService: TopicsService) {}
 
   ngOnInit(): void {
-    this.topics = this.topicsService.selectAllTopics();
+    this.topics = this.topicsService.selectAll();
   }
 }
