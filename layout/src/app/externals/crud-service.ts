@@ -20,4 +20,14 @@ export abstract class CrudService<T> implements CrudServiceInterface<T> {
   selectAll(): T[] | Promise<T[]> {
     return this.collection;
   }
+
+  delete(id: number): T[] | Promise<T[]> {
+    return this.collection.splice(id, 1);
+  }
+
+  update(id: number): T[] | Promise<T[]> {
+    const collection_copy = [...this.collection];
+    if (!collection_copy) return;
+    return collection_copy;
+  }
 }
