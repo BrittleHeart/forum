@@ -1,8 +1,32 @@
 <main class="app__topic-content" id="topicContent" role="main">
-  <div id="topicContentWrapper" class="app__topic-content-wrapper" *ngFor="let topic of topics">
-    <h1 class="topics__header">{{topic.title}}</h1>
-    <p class="topic__description">{{topic.description}}</p>
+  <section class="app__topic-section">
+    <h1 class="app__topic-section-header">All topics</h1>
 
-    <button class="button hoverable">See more</button>
-  </div>
+    <!-- Single topic -->
+    <div id="topicContentWrapper" class="app__topic-content-wrapper" *ngFor="let topic of topics">
+      <div class="app__topic-content-wrapper-left-side">
+        <figure class="image-wrapper" id="image">
+          <img class="image" src="https://unsplash.it/100/100" alt="User Avatar">
+        </figure>
+        <div class="trophies">
+          <div>SV</div>
+          <div>SY</div>
+          <div>GZ</div>
+        </div>
+      </div>
+      <div class="app__topic-content-wrapper-middle-side">
+        <h2>
+          <a [routerLink]="['/topics', topic.id]"
+            [title]="topic.title + ' details'"
+            class="topics__header">
+
+          {{topic.title}}
+          </a>
+        </h2>
+        <p class="topic__description">{{topic.description}}</p>
+
+        <button class="button" [routerLink]="['/topics', topic.id]">See more</button>
+      </div>
+    </div>
+  </section>
 </main>
