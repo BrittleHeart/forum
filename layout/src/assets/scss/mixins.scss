@@ -1,0 +1,52 @@
+@import 'colors';
+@import "variables";
+
+@mixin header($font-size, $line-height: 1) {
+  font-family: $Lato-font-family;
+  font-weight: $text-bold;
+  font-size: #{$font-size}px;
+  color: $login-text-color;
+  letter-spacing: 2px;
+  line-height: $line-height;
+}
+
+@mixin label($font-size: 17, $line-height: 1) {
+  font-family: $Roboto-font-family;
+  font-weight: $text-regular;
+  font-size: #{$font-size}px;
+  line-height: $line-height;
+  letter-spacing: 3px;
+  color: $login-text-color;
+}
+
+@mixin input($background-color: $input-background-color, $border-radius: none) {
+  padding: 3px 7px;
+  line-height: 2;
+  background-color: $background-color;
+  border: 1px solid $background-color;
+  border-radius: $border-radius; /*[smooth, medium, large]*/
+  font-family: $Roboto-font-family;
+  font-weight: $text-regular;
+  outline: none;
+}
+
+@mixin hoverableButton($intensity) {
+  box-shadow: $intensity;
+}
+
+@mixin button($background-color: $button-background-color, $border-radius: none, $hoverable: false) {
+  color: $login-text-color;
+  border: none;
+  background: $button-background-color none;
+  outline: none;
+  padding: 3px 7px;
+  line-height: 1.5; /*Or 2.0 -> multiplier*/
+  @if hoverable {
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      @include hoverableButton(
+          $box-shadow-intensity-smooth)
+    }
+  }
+}
