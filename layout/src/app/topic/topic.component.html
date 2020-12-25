@@ -1,1 +1,8 @@
-<p>topic works!</p>
+<main class="app__topic-content" id="topicContent" role="main">
+  <div id="topicContentWrapper" class="app__topic-content-wrapper" *ngFor="let topic of topics">
+    <h1 class="topics__header">{{topic.title}}</h1>
+    <p class="topic__description">{{topic.description}}</p>
+
+    <button class="button hoverable">See more</button>
+  </div>
+</main>
