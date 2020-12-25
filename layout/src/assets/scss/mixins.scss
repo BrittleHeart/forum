@@ -1,9 +1,24 @@
 @import 'colors';
 @import "variables";
 
-@mixin header($font-size, $color: $login-text-color, $line-height: 1) {
+@mixin header($font-size, $color: $login-text-color, $line-height: 1, $hoverable: false) {
   font-family: $Lato-font-family;
   font-weight: $text-bold;
+  font-size: #{$font-size}px;
+  color: $color;
+  letter-spacing: 2px;
+  line-height: $line-height;
+
+  @if $hoverable {
+    transition: color 0.3s ease-in-out;
+
+    &:hover {color: rgb(6, 140, 243);}
+  }
+}
+
+@mixin paragraph($font-size, $color: $login-text-color, $line-height: 1) {
+  font-family: $Roboto-font-family;
+  font-weight: $text-regular;
   font-size: #{$font-size}px;
   color: $color;
   letter-spacing: 2px;
@@ -39,9 +54,12 @@
   border: none;
   background: $button-background-color none;
   outline: none;
-  padding: 3px 7px;
+  padding: 4px 7px;
   line-height: 1.5; /*Or 2.0 -> multiplier*/
-  @if hoverable {
+  cursor: pointer;
+  border-radius: $border-radius;
+
+  @if $hoverable {
     transition: box-shadow 0.3s ease;
 
     &:hover {
@@ -55,4 +73,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@mixin set-grid-template($grid-width, $grid-columns: 2, $repeatable: false) {
+  display: grid;
+  align-items: center;
+
+  @if $repeatable {
+    grid-template-columns: repeat($grid-columns, #{$grid-width}fr); // That's not the best way to do this, but for now it's enough
+  } @else {
+    grid-template-columns: #{$grid-width}fr;
+  }
+}
+
+@mixin topicSection() {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  background: $pure-white;
+  border-radius: 5px;
+  margin: 40px auto;
+  box-shadow: $box-shadow-intensity-smooth;
+  font-family: $Lato-font-family;
+  @include flex-between;
 }
