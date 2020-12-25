@@ -9,7 +9,7 @@ export const topics = [
   },
   {
     id: 2,
-    title: 'My first topic in this forum',
+    title: 'How to become developer',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis, magna quis ultricies efficitur, metus orci pulvinar metus, in dapibus magna odio vel sapien. Sed auctor ligula porttitor neque tincidunt, id tristique nisi viverra. Aenean a tortor eget eros sodales malesuada. Praesent ornare, sem eget tempor fermentum, nisi lorem maximus erat, nec interdum quam lectus ut mauris. Praesent in justo leo. Integer eu sem eros. ',
     content:
@@ -17,7 +17,7 @@ export const topics = [
   },
   {
     id: 3,
-    title: 'My first topic in this forum',
+    title: 'How to stay a good man',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis, magna quis ultricies efficitur, metus orci pulvinar metus, in dapibus magna odio vel sapien. Sed auctor ligula porttitor neque tincidunt, id tristique nisi viverra. Aenean a tortor eget eros sodales malesuada. Praesent ornare, sem eget tempor fermentum, nisi lorem maximus erat, nec interdum quam lectus ut mauris. Praesent in justo leo. Integer eu sem eros. ',
     content:
@@ -25,7 +25,7 @@ export const topics = [
   },
   {
     id: 4,
-    title: 'My first topic in this forum',
+    title: 'How to handle math?',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis, magna quis ultricies efficitur, metus orci pulvinar metus, in dapibus magna odio vel sapien. Sed auctor ligula porttitor neque tincidunt, id tristique nisi viverra. Aenean a tortor eget eros sodales malesuada. Praesent ornare, sem eget tempor fermentum, nisi lorem maximus erat, nec interdum quam lectus ut mauris. Praesent in justo leo. Integer eu sem eros. ',
     content:
