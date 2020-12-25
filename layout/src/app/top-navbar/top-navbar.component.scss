@@ -16,10 +16,7 @@
   }
 
   &__wrapper .brand {
-    @include header(23, $pure-dark ,1);
-    transition: color 0.3s ease-in-out;
-
-    &:hover {color: rgb(6, 140, 243);}
+    @include header(23, $pure-dark, 1, true);
   }
 
   &__wrapper .links-list .list-item {
