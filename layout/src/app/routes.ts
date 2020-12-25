@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { TopNavbarComponent } from './top-navbar/top-navbar.component';
+import { TopicComponent } from './topic/topic.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: TopNavbarComponent,
+    component: TopicComponent,
   },
 ];

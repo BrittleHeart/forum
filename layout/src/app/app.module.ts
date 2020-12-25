@@ -4,19 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
-import { TopicsComponent } from './topics/topics.component';
-
+import { TopicComponent } from './topic/topic.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    TopNavbarComponent,
-    TopicsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, TopNavbarComponent, TopicComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
