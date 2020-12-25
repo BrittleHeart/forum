@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Topic } from './interfaces/topic';
-import { TopicServiceInterface } from './interfaces/topic-service';
-import { topics } from './topics';
+import { Topic } from '../interfaces/topic';
+import { TopicServiceInterface } from '../interfaces/topic-service';
+import { topics } from '../topics';
 
 @Injectable({
   providedIn: 'root',
