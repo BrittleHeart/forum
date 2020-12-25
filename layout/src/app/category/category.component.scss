@@ -1,0 +1,27 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.app__category-section-header {
+  @include header(30, $pure-dark);
+  border-bottom: 1px solid $background-grey-color;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+.app__category-list {
+  padding: 10px;
+
+  &-item {
+    line-height: 2;
+  }
+  &-item--link {
+    display: block;
+    color: $pure-dark;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

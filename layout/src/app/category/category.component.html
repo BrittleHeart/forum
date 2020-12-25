@@ -1,1 +1,6 @@
-<p>category works!</p>
+<h1 class="app__category-section-header">Categories</h1>
+<ul class="app__category-list">
+  <li class="app__category-list-item">
+    <a href="" class="app__category-list-item--link" *ngFor="let category of categories">{{category.name}}</a>
+  </li>
+</ul>

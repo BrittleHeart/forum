@@ -7,14 +7,14 @@
     width: 100%;
     max-width: 100%;
     padding: 10px;
+    @include flex-between;
   }
 
   &-section {
-    width: 60%;
-    max-width: 60%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
     padding: 10px;
-
   }
 
   &-section-header {@include header(30, $pure-dark);}
@@ -64,5 +64,18 @@
       @include button($button-background-color, 2px, true);
       font-size: 1.1rem;
     }
+  }
+}
+
+.app__category {
+  &-section {
+    width: 20%;
+    align-items: start;
+    margin: 40px auto;
+    padding: 10px 5px;
+    background: $pure-white;
+    height: 30%;
+    box-shadow: $box-shadow-intensity-smooth;
+    border-radius: 3px;
   }
 }

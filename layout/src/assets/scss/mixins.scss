@@ -71,7 +71,6 @@
 
 @mixin flex-between() {
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -89,10 +88,10 @@
 @mixin topicSection() {
   width: 100%;
   max-width: 100%;
-  padding: 10px;
+  padding: 20px;
   background: $pure-white;
   border-radius: 5px;
-  margin: 40px auto;
+  margin: 40px auto 0 auto;
   box-shadow: $box-shadow-intensity-smooth;
   font-family: $Lato-font-family;
   @include flex-between;
