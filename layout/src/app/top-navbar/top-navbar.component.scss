@@ -1,22 +1,22 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
 .navigation {
   width: 100%;
   max-width: 100%;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: $pure-white;
+  box-shadow: $box-shadow-intensity-smooth;
 
   &__wrapper {
     padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 70%;
     margin: 0 auto;
+    @include flex-between;
   }
 
   &__wrapper .brand {
-    color: rgb(0, 0, 0);
-    font-weight: 700;
-    font-size: 22px;
+    @include header(23, $pure-dark ,1);
     transition: color 0.3s ease-in-out;
 
     &:hover {color: rgb(6, 140, 243);}

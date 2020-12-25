@@ -1,11 +1,11 @@
 @import 'colors';
 @import "variables";
 
-@mixin header($font-size, $line-height: 1) {
+@mixin header($font-size, $color: $login-text-color, $line-height: 1) {
   font-family: $Lato-font-family;
   font-weight: $text-bold;
   font-size: #{$font-size}px;
-  color: $login-text-color;
+  color: $color;
   letter-spacing: 2px;
   line-height: $line-height;
 }
@@ -49,4 +49,10 @@
           $box-shadow-intensity-smooth)
     }
   }
+}
+
+@mixin flex-between() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
