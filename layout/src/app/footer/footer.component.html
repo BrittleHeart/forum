@@ -1,9 +1,21 @@
 <footer class="app__footer" id="footer" role="contentinfo">
-  <p class="app__footer-copyrights">Bartosz Pazdur Forum &copy; 2020 {{getDate === 2020 ? '-' : ''}} {{getDate}}</p>
-  <div class="app__footer--socials">
-    <i class="fa fa-facebook-f"></i>
-    <i class="fa fa-google-plus"></i>
-    <i class="fa fa-github"></i>
-    <i class="fa fa-gitlab"></i>
+  <div class="app__footer--wrapper">
+    <p class="app__footer--wrapper-copyrights">Bartosz Pazdur Forum &copy; 2020 {{getDate === 2020 ? '-' : ''}} {{getDate}}</p>
+    <div class="app__footer--wrapper-socials">
+      <a href="https://www.facebook.com/bartosz.pazdur.1/">
+        <fa-icon [icon]="faFacebook" class="app__footer--wrapper-socials-link">
+        </fa-icon>
+      </a>
+
+      <a href="https://github.com/BrittleHeart">
+        <fa-icon [icon]="faGithub" class="app__footer--wrapper-socials-link">
+        </fa-icon>
+      </a>
+
+      <a href="https://gitlab.com/BrittleHeart">
+        <fa-icon [icon]="faGitlab" class="app__footer--wrapper-socials-link">
+        </fa-icon>
+      </a>
+    </div>
   </div>
 </footer>

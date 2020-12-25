@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  faFacebook,
+  faGithub,
+  faGitlab,
+} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -7,11 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   getDate: number;
+  faFacebook = faFacebook;
+  faGithub = faGithub;
+  faGitlab = faGitlab;
 
   constructor() {}
 
   ngOnInit(): void {
     this.getDate = new Date().getFullYear();
-    if (this.getDate === 2020) this.getDate = '';
+    if (this.getDate === 2020) this.getDate = null;
   }
 }

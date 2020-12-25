@@ -1,0 +1,30 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/mixins";
+
+.app__footer {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: $pure-white;
+  padding: 20px;
+
+  &--wrapper {
+    width: 40%;
+    max-width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    @include flex-between;
+  }
+
+  &--wrapper-copyrights {
+    @include header(15, $pure-dark, initial, true);
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+
+  &--wrapper-socials-link {
+    margin: 0 4px;
+    color: $background-grey-bold-color;
+  }
+}
