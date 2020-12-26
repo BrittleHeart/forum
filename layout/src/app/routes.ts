@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: TopicDetailsComponent,
   },
   {
-    path: '/login',
+    path: 'sign-in',
     component: LoginComponent,
   },
 ];
