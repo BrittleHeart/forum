@@ -57,6 +57,23 @@
     background-color: $pure-white;
     padding: 20px;
     z-index: 100;
+
+    .caption {
+      @include header(20, $pure-dark);
+      margin: 10px 0;
+      padding: 10px 0;
+      border-bottom: 1px solid lighten($background-grey-bold-color, 40%);
+    }
+  }
+
+  &__burger--navigation .links-list {
+    padding: 10px 0;
+
+    .link {
+      display: block;
+      line-height: 2;
+      font-size: 1.1rem;
+    }
   }
 
   &__overlay {

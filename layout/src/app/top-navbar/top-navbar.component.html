@@ -1,6 +1,33 @@
 <nav id="nav" class="navigation" role="navigation" aria-label="Page navigation">
-  <div class="navigation__burger--navigation" id="burgerMenu" *ngIf="isOpen" [@toggleNavigation]="isOpen ? 'open' : 'closed'">
-    <h1>Some txt</h1>
+  <div class="navigation__burger--navigation" id="burgerMenu" *ngIf="isOpen"
+       [@toggleNavigation]="isOpen ? 'open' : 'closed'">
+    <h1 class="caption">Externals links</h1>
+    <ul class="links-list">
+      <li class="list-item">
+        <a routerLink="/sign-in" class="link">Portfolio</a>
+        <a routerLink="/sign-in" class="link">Blog</a>
+      </li>
+    </ul>
+
+    <h1 class="caption">Activities</h1>
+    <ul class="links-list">
+      <li class="list-item">
+        <a routerLink="/sign-in" class="link">Topics</a>
+        <a routerLink="/sign-in" class="link">Categories</a>
+        <a routerLink="/sign-in" class="link">Login</a>
+        <a routerLink="/sign-in" class="link">Register</a>
+      </li>
+    </ul>
+
+    <h1 class="caption">Admin activities</h1>
+    <ul class="links-list">
+      <li class="list-item">
+        <a routerLink="/sign-in" class="link">Dashboard</a>
+        <a routerLink="/sign-in" class="link">Add new topic</a>
+        <a routerLink="/sign-in" class="link">Users</a>
+        <a routerLink="/sign-in" class="link">Categories</a>
+      </li>
+    </ul>
   </div>
   <div class="navigation__overlay" id="overlay" (click)="toggleMenu()" *ngIf="isOpen"></div>
   <div class="navigation__wrapper">
