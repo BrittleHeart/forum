@@ -1,14 +1,18 @@
 <nav id="nav" class="navigation" role="navigation" aria-label="Page navigation">
+  <div class="navigation__burger--navigation hidden" id="burgerMenu">
+    <h1>Some txt</h1>
+  </div>
+  <div class="navigation__overlay hidden" id="overlay" (click)="toggleMenu()"></div>
   <div class="navigation__wrapper">
-    <a routerLink="/" class="brand" id="brand">Bartosz Pazdur Forum</a>
     <div class="burgerMenu">
-      <ul class="links-list">
-        <li class="list-item">
-          <a routerLink="/sign-in" class="link">Sign in</a>
-        </li>
-      </ul>
-      <fa-icon [icon]="faMenu" class="burgerMenu-icon"></fa-icon>
+      <fa-icon [icon]="faMenu" class="burgerMenu-icon" (click)="toggleMenu()"></fa-icon>
+      <a routerLink="/" class="brand" id="brand">Bartosz Pazdur Forum</a>
     </div>
+    <ul class="links-list">
+      <li class="list-item">
+        <a routerLink="/sign-in" class="link">Sign in</a>
+      </li>
+    </ul>
   </div>
 </nav>
 

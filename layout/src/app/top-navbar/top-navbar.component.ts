@@ -12,4 +12,12 @@ export class TopNavbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  toggleMenu() {
+    const menu = document.querySelector('#burgerMenu');
+    const overlay = document.querySelector('#overlay');
+
+    menu.classList.toggle('hidden');
+    overlay.classList.toggle('hidden');
+  }
 }
