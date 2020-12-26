@@ -19,14 +19,25 @@
     @include header(23, $pure-dark, 1, true);
   }
 
+  &__wrapper .burgerMenu {
+    align-items: center;
+    @include flex-between;
+  }
+
+  &__wrapper .burgerMenu .burgerMenu-icon {
+    margin: 0 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
   &__wrapper .links-list .list-item {
     display: inline-block;
     margin: 0 10px;
     font-size: 19px;
   }
 
-  &__wrapper .links-list:nth-child(2) .list-item a {
-    color: rgba(103, 103, 103, 0.6);
-    font-size: 21px;
+  &__wrapper .links-list .list-item > .link {
+    @include button(initial, 2px, true);
+    padding: 8px 20px;
   }
 }
