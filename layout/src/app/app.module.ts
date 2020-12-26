@@ -9,8 +9,9 @@ import { TopicDetailsComponent } from './topic-details/topic-details.component';
 import { CategoryComponent } from './category/category.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoginComponent } from './login/login.component';
 @NgModule({
-  declarations: [AppComponent, TopNavbarComponent, TopicComponent, TopicDetailsComponent, CategoryComponent, FooterComponent],
+  declarations: [AppComponent, TopNavbarComponent, TopicComponent, TopicDetailsComponent, CategoryComponent, FooterComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
