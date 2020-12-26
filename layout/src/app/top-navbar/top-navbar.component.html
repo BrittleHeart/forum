@@ -1,8 +1,8 @@
 <nav id="nav" class="navigation" role="navigation" aria-label="Page navigation">
-  <div class="navigation__burger--navigation hidden" id="burgerMenu">
+  <div class="navigation__burger--navigation" id="burgerMenu" *ngIf="isOpen" [@toggleNavigation]="isOpen ? 'open' : 'closed'">
     <h1>Some txt</h1>
   </div>
-  <div class="navigation__overlay hidden" id="overlay" (click)="toggleMenu()"></div>
+  <div class="navigation__overlay" id="overlay" (click)="toggleMenu()" *ngIf="isOpen"></div>
   <div class="navigation__wrapper">
     <div class="burgerMenu">
       <fa-icon [icon]="faMenu" class="burgerMenu-icon" (click)="toggleMenu()"></fa-icon>
