@@ -20,7 +20,7 @@ export class UsersService extends CrudService<User> {
 
   authenticate(email: string, password: string): User {
     const user = this.findUser(email);
-    if (!user && password !== user.password)
+    if (!user || password !== user.password)
       alert('Error: Could not find user with this email');
 
     return user;
