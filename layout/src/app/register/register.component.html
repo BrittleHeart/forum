@@ -1,1 +1,38 @@
-<p>register works!</p>
+<section class="app__register--errors" *ngFor="let error of errors">
+  <p>{{error}}</p>
+</section>
+
+<section class="app__register">
+  <div class="app__register--container">
+    <h1 class="app__register--container--header">Sign-in</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="register(); $event.stopPropagation()" role="form" class="form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" formControlName="name" autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" formControlName="email" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" formControlName="password" autocomplete="password">
+      </div>
+
+      <div class="actions">
+        <label>
+          <input type="checkbox">
+          Remember me
+        </label>
+        <button type="submit" (click)="register()">Sign-in</button>
+      </div>
+
+      <div class="helpers">
+        <a routerLink="/sign-in">Already have account?</a>
+      </div>
+    </form>
+  </div>
+</section>
+
