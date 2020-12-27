@@ -1,4 +1,6 @@
-export const topics = [
+import { Topic } from './interfaces/topic';
+
+export const topics: Topic[] = [
   {
     id: 1,
     title: 'My first topic in this forum',
