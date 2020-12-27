@@ -36,3 +36,16 @@
   </div>
 </section>
 
+<section class="result" *ngIf="formSent">
+  <h2 class="result__header">User created</h2>
+
+  <p class="result__paragraph">
+    Name: {{registerForm.controls.name.value}}
+  </p>
+  <p class="result__paragraph">
+    Email: {{registerForm.controls.email.value}}
+  </p>
+  <p class="result__paragraph">
+    Password: <i class="result__paragraph--muted">Your chosen password</i>
+  </p>
+</section>
