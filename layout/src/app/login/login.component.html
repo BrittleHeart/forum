@@ -1,9 +1,30 @@
-<form [formGroup]="loginForm" (ngSubmit)="login(); $event.stopPropagation()" >
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" formControlName="email" autocomplete="email">
+<section class="app__login">
+  <div class="app__login--container">
+    <h1 class="app__login--container--header">Sign-in</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login(); $event.stopPropagation()" role="form" class="form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" formControlName="email" autocomplete="email">
+      </div>
 
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" formControlName="password" autocomplete="password">
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" formControlName="password" autocomplete="password">
+      </div>
 
-  <button type="submit">Sign-in</button>
-</form>
+      <div class="actions">
+        <label>
+          <input type="checkbox">
+          Remember me
+        </label>
+        <button type="submit">Sign-in</button>
+      </div>
+
+      <div class="helpers">
+        <a routerLink="/password-recover">Forgot your password?</a>
+        <a routerLink="/register">Register instead</a>
+      </div>
+    </form>
+  </div>
+</section>
+
