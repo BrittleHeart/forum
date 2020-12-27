@@ -1,3 +1,7 @@
+<section class="app__login--errors" *ngFor="let error of errors">
+  <p>{{error}}</p>
+</section>
+
 <section class="app__login">
   <div class="app__login--container">
     <h1 class="app__login--container--header">Sign-in</h1>
@@ -17,7 +21,7 @@
           <input type="checkbox">
           Remember me
         </label>
-        <button type="submit">Sign-in</button>
+        <button type="submit" (click)="login()">Sign-in</button>
       </div>
 
       <div class="helpers">

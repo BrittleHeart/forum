@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { User } from '../interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +9,32 @@ import { User } from '../interfaces/user';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  isLoginForm: boolean;
   loginForm: FormGroup;
+  errors: Array<string>;
 
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
     });
+
+    this.errors = [];
   }
 
-  login(): void {
+  async login(): Promise<boolean | number> {
     const { email, password } = this.loginForm.controls;
-    const user: User = this.usersService.authenticate(
+    const user: boolean = this.usersService.authenticate(
       email.value,
       password.value
     );
 
-    if (user) alert(`Email: ${user.email} Password: ${user.password}`);
+    if (!user)
+      return this.errors.push('Invalid credentials', 'Could not sing-in');
+    return this.router.navigate(['dashboard']);
   }
 }
