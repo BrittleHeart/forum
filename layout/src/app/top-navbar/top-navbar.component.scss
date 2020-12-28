@@ -45,7 +45,7 @@
   }
 
   &__wrapper .links-list .list-item > .link {
-    @include button(initial, 2px, true);
+    @include button($button-background-color, 2px, true);
     padding: 8px 20px;
   }
 

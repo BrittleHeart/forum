@@ -57,7 +57,7 @@
     align-items: center;
 
     button {
-      @include button(initial, 2px, true);
+      @include button($button-background-color, 2px, true);
       font-size: 1.2rem;
       margin-top: 10px;
     }
