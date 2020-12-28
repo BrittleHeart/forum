@@ -52,7 +52,7 @@
 @mixin button($background-color: $button-background-color, $border-radius: none, $hoverable: false) {
   color: $login-text-color;
   border: none;
-  background: $button-background-color none;
+  background: $background-color none;
   outline: none;
   padding: 4px 7px;
   line-height: 1.5; /*Or 2.0 -> multiplier*/
