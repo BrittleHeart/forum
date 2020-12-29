@@ -1,12 +1,4 @@
-<section class="app__form--errors" *ngIf="errors.length > 0">
-  <ul class="app__form--errors__list">
-    <li class="app__form--errors__list--item" *ngFor="let error of errors">
-      <h1>{{error.error}}</h1>
-      <p>{{error.message}}</p>
-    </li>
-  </ul>
-  <fa-icon [icon]="close" class="app__form--errors__close"></fa-icon>
-</section>
+<app-error-banner [errors]="errors"></app-error-banner>
 
 <section class="app__form">
   <div class="app__form--container">

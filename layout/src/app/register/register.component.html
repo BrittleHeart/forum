@@ -1,11 +1,13 @@
-<section class="app__form--errors" *ngFor="let error of errors">
-  <p>{{error}}</p>
-</section>
+<app-error-banner [errors]="errors"></app-error-banner>
 
 <section class="app__form">
   <div class="app__form--container">
     <h1 class="app__form--container--header">Sign-in</h1>
-    <form [formGroup]="registerForm" (ngSubmit)="register(); $event.stopPropagation()" role="form" class="app__form--content">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="register(); $event.stopPropagation()"
+      role="form"
+      class="app__form--content">
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" formControlName="name" autocomplete="name">
@@ -22,7 +24,12 @@
           <span (click)="showPassword()" *ngIf="!passwordShown">Show password</span>
           <span (click)="hidePassword()" *ngIf="passwordShown">Hide password</span>
         </div>
-        <input [type]="passwordShown ? 'text' : 'password' " id="password" name="password" formControlName="password" autocomplete="password">
+        <input
+          [type]="passwordShown ? 'text' : 'password' "
+          id="password"
+          name="password"
+          formControlName="password"
+          autocomplete="password">
       </div>
 
       <div class="actions">
