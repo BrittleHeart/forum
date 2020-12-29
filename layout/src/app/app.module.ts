@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { ErrorBannerComponent } from './error-banner/error-banner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     DashboardComponent,
     RegisterComponent,
+    ErrorBannerComponent,
   ],
   imports: [
     BrowserModule,
