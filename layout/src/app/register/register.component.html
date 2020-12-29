@@ -9,18 +9,30 @@
       role="form"
       class="app__form--content">
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" formControlName="name" autocomplete="name">
+        <label for="name">Name: <i class="required">*</i></label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          formControlName="name"
+          placeholder="How should we call you?"
+          autocomplete="name">
       </div>
 
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" formControlName="email" autocomplete="email">
+        <label for="email">Email: <i class="required">*</i></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          formControlName="email"
+          placeholder="valid email address"
+          autocomplete="email">
       </div>
 
       <div class="form-group">
         <div class="form-group__actions">
-          <label for="password">Password:</label>
+          <label for="password">Password: <i class="required">*</i></label>
           <span (click)="showPassword()" *ngIf="!passwordShown">Show password</span>
           <span (click)="hidePassword()" *ngIf="passwordShown">Hide password</span>
         </div>
@@ -29,6 +41,7 @@
           id="password"
           name="password"
           formControlName="password"
+          placeholder="min:8 characters"
           autocomplete="password">
       </div>
 
