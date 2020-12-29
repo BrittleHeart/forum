@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         error: 'Login error',
         message: 'Invalid credentials were passed',
       });
+      this.loginForm.reset({ email: email.value });
       return;
     }
     return await this.router.navigate(['dashboard']);
