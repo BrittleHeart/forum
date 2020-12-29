@@ -3,17 +3,42 @@
   width: 30%;
   max-width: 30%;
   margin: 30px auto;
-  padding: 20px;
+  padding: 10px;
   color: $pure-dark;
   border-radius: 10px;
   box-shadow: $box-shadow-intensity-smooth;
-  background: $pure-white none;
+  background: $error-color none;
+  position: relative;
 
   &__list {
     list-style: none;
+    padding: 0;
   }
 
   &__list--item {
-    line-height: 2;
+    margin: 10px 0;
+    width: 90%;
+    max-width: 90%;
+  }
+
+  &__list--item h1 {
+    @include header(26, $pure-white);
+    border-bottom: 1px solid rgba(230, 230, 230, .4);
+    padding: 10px 0;
+  }
+
+  &__list--item p {
+    @include paragraph(15, $pure-white);
+    margin: 10px auto;
+    line-height: 1.5;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.3rem;
+    color: $pure-white;
+    padding: 10px;
   }
 }

@@ -3,6 +3,7 @@ import { UsersService } from '../services/users.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthErrorInterface } from '../interfaces/auth-error-interface';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { AuthErrorInterface } from '../interfaces/auth-error-interface';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: AuthErrorInterface[] | undefined;
+  close = faTimes;
 
   constructor(
     private readonly usersService: UsersService,
