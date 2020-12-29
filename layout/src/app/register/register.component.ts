@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   errors: AuthErrorInterface[] | undefined;
   formSent: boolean;
   passwordShown: boolean;
+  bannerShown: boolean;
 
   constructor(private readonly usersService: UsersService) {}
 
@@ -30,6 +31,7 @@ export class RegisterComponent implements OnInit {
     this.errors = this.usersService.errors;
     this.formSent = false;
     this.passwordShown = false;
+    this.bannerShown = false;
   }
 
   register(): void {

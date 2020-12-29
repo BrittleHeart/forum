@@ -9,8 +9,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class ErrorBannerComponent implements OnInit {
   @Input() errors: any;
   close = faTimes;
+  @Input() bannerShown: boolean;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  closeBanner() {
+    this.bannerShown = false;
+  }
 }

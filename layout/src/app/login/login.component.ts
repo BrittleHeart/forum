@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   errors: AuthErrorInterface[] | undefined;
   close = faTimes;
   passwordShown: boolean;
+  bannerShown: boolean;
 
   constructor(
     private readonly usersService: UsersService,
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.passwordShown = false;
+    this.bannerShown = false;
 
     this.errors = this.usersService.errors;
   }
@@ -44,9 +46,11 @@ export class LoginComponent implements OnInit {
         error: 'Login error',
         message: 'Invalid credentials were passed',
       });
+      this.bannerShown = true;
       this.loginForm.reset({ email: email.value });
       return;
     }
+    this.bannerShown = false;
     return await this.router.navigate(['dashboard']);
   }
 
