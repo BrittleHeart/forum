@@ -1,8 +1,9 @@
 import { CrudServiceInterface } from './crud-service-interface';
+import { AuthErrorInterface } from '../interfaces/auth-error-interface';
 
 export abstract class CrudService<T> implements CrudServiceInterface<T> {
   public collection: T[] | undefined;
-  public errors: string[] | undefined;
+  public errors: AuthErrorInterface[] | undefined;
 
   add(t: T): number | Promise<number> {
     return this.collection.push(t);

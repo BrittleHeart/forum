@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../services/users.service';
 import { User } from '../interfaces/user';
+import { AuthErrorInterface } from '../interfaces/auth-error-interface';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { User } from '../interfaces/user';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  errors: string[] | undefined;
+  errors: AuthErrorInterface[] | undefined;
   formSent: boolean;
 
   constructor(private readonly usersService: UsersService) {}
