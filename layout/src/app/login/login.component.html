@@ -3,7 +3,11 @@
 <section class="app__form">
   <div class="app__form--container">
     <h1 class="app__form--container--header">Sign-in</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="login(); $event.stopPropagation()" role="form" class="app__form--content">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="login(); $event.stopPropagation()"
+      role="form"
+      class="app__form--content">
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" formControlName="email" autocomplete="email">
@@ -17,7 +21,12 @@
           <span (click)="showPassword()" *ngIf="!passwordShown">Show password</span>
           <span (click)="hidePassword()" *ngIf="passwordShown">Hide password</span>
         </div>
-        <input [type]="passwordShown ? 'text' : 'password'" id="password" name="password" formControlName="password" autocomplete="password">
+        <input
+          [type]="passwordShown ? 'text' : 'password'"
+          id="password"
+          name="password"
+          formControlName="password"
+          autocomplete="password">
       </div>
 
       <div class="actions">
