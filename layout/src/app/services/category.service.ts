@@ -12,5 +12,6 @@ export class CategoryService extends CrudService<Category> {
   constructor() {
     super();
     this.collection = this.categories;
+    this.errors = [];
   }
 }

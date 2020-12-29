@@ -12,5 +12,6 @@ export class TopicsService extends CrudService<Topic> {
   constructor() {
     super();
     this.collection = this.topics;
+    this.errors = [];
   }
 }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  errors: Array<string>;
+  errors: string[] | undefined;
 
   constructor(
     private readonly usersService: UsersService,
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl(''),
     });
 
-    this.errors = [];
+    this.errors = this.usersService.errors;
   }
 
   async login(): Promise<boolean | number> {
@@ -33,8 +33,7 @@ export class LoginComponent implements OnInit {
       password.value
     );
 
-    if (!user)
-      return this.errors.push('Invalid credentials', 'Could not sing-in');
+    if (!user) return this.usersService.errors.push('Invalid credentials');
     return this.router.navigate(['dashboard']);
   }
 }

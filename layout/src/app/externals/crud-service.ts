@@ -1,7 +1,8 @@
 import { CrudServiceInterface } from './crud-service-interface';
 
 export abstract class CrudService<T> implements CrudServiceInterface<T> {
-  public collection: T[];
+  public collection: T[] | undefined;
+  public errors: string[] | undefined;
 
   add(t: T): number | Promise<number> {
     return this.collection.push(t);

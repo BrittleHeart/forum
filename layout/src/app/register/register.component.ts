@@ -10,7 +10,7 @@ import { User } from '../interfaces/user';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  errors: Array<string>;
+  errors: string[] | undefined;
   formSent: boolean;
 
   constructor(private readonly usersService: UsersService) {}
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       ]),
     });
 
-    this.errors = [];
+    this.errors = this.usersService.errors;
     this.formSent = false;
   }
 

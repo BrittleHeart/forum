@@ -12,6 +12,7 @@ export class UsersService extends CrudService<User> {
   constructor() {
     super();
     this.collection = this.users;
+    this.errors = [];
   }
 
   findUser(email: string): User {
