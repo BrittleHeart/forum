@@ -1,5 +1,9 @@
-<section class="app__form--errors" *ngFor="let error of errors">
-  <p>{{error}}</p>
+<section class="app__form--errors" *ngIf="errors.length > 0">
+  <ul class="app__form--errors__list">
+    <li class="app__form--errors__list--item" *ngFor="let error of errors">
+      <p>{{error}}</p>
+    </li>
+  </ul>
 </section>
 
 <section class="app__form">

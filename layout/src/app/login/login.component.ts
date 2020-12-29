@@ -26,14 +26,17 @@ export class LoginComponent implements OnInit {
     this.errors = this.usersService.errors;
   }
 
-  async login(): Promise<boolean | number> {
+  async login(): Promise<boolean | void> {
     const { email, password } = this.loginForm.controls;
     const user: boolean = this.usersService.authenticate(
       email.value,
       password.value
     );
 
-    if (!user) return this.usersService.errors.push('Invalid credentials');
-    return this.router.navigate(['dashboard']);
+    if (!user) {
+      this.usersService.errors.push('Invalid credentials');
+      return;
+    }
+    return await this.router.navigate(['dashboard']);
   }
 }
