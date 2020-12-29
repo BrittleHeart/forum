@@ -18,8 +18,14 @@
       </div>
 
       <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" formControlName="password" autocomplete="password">
+        <div class="form-group__actions">
+          <label for="password">
+            Password:
+          </label>
+          <span (click)="showPassword()" *ngIf="!passwordShown">Show password</span>
+          <span (click)="hidePassword()" *ngIf="passwordShown">Hide password</span>
+        </div>
+        <input [type]="passwordShown ? 'text' : 'password'" id="password" name="password" formControlName="password" autocomplete="password">
       </div>
 
       <div class="actions">

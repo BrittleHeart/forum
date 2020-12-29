@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errors: AuthErrorInterface[] | undefined;
   formSent: boolean;
+  passwordShown: boolean;
 
   constructor(private readonly usersService: UsersService) {}
 
@@ -28,6 +29,7 @@ export class RegisterComponent implements OnInit {
 
     this.errors = this.usersService.errors;
     this.formSent = false;
+    this.passwordShown = false;
   }
 
   register(): void {
@@ -43,5 +45,13 @@ export class RegisterComponent implements OnInit {
     this.usersService.add(user);
 
     if (this.registerForm.valid) this.formSent = true;
+  }
+
+  showPassword() {
+    this.passwordShown = true;
+  }
+
+  hidePassword() {
+    this.passwordShown = false;
   }
 }

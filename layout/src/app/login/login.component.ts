@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: AuthErrorInterface[] | undefined;
   close = faTimes;
+  passwordShown: boolean;
 
   constructor(
     private readonly usersService: UsersService,
@@ -25,6 +26,8 @@ export class LoginComponent implements OnInit {
       email: new FormControl(''),
       password: new FormControl(''),
     });
+
+    this.passwordShown = false;
 
     this.errors = this.usersService.errors;
   }
@@ -45,5 +48,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     return await this.router.navigate(['dashboard']);
+  }
+
+  showPassword() {
+    this.passwordShown = true;
+  }
+
+  hidePassword() {
+    this.passwordShown = false;
   }
 }
