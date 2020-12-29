@@ -72,6 +72,12 @@
       @include button($button-background-color, 2px, true);
       font-size: 1.2rem;
       margin-top: 10px;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
     }
 
   }
