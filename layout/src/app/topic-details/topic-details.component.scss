@@ -1,0 +1,44 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.app__topic {
+  &--details-content-wrapper {
+    width: 60%;
+    max-width: 60%;
+    padding: 10px;
+    margin: 30px auto;
+    box-shadow: $box-shadow-intensity-medium;
+    background: $pure-white none;
+    border-radius: 5px;
+    @include flex-between;
+
+    &-left-side {
+      margin: 0 20px;
+
+      .image-wrapper .image {
+        border-radius: 50px;
+      }
+
+      .trophies {
+        @include set-grid-template(1, 3, true);
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+
+    &-middle-side {
+      width: 70%;
+      max-width: 70%;
+      margin: 0 auto 0 0;
+
+      .topic__header {
+        @include header(22, $pure-dark, 1.5);
+      }
+
+      .topic__description {
+        @include paragraph(16, $text-muted, 1.5);
+      }
+    }
+  }
+}

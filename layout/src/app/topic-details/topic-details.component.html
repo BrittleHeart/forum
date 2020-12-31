@@ -1,1 +1,18 @@
-<p>topic-details works!</p>
+<section id="topicDetails1ContentWrapper" class="app__topic--details-content-wrapper">
+  <div class="app__topic--details-content-wrapper-left-side">
+    <figure class="image-wrapper" id="image">
+      <img class="image" src="https://unsplash.it/100/100" alt="User Avatar">
+    </figure>
+    <div class="trophies">
+      <div>SV</div>
+      <div>SY</div>
+      <div>GZ</div>
+    </div>
+  </div>
+  <div class="app__topic--details-content-wrapper-middle-side">
+    <h1 [title]="topic.title + ' details'" class="topic__header">
+      {{topic.title}}
+    </h1>
+    <p class="topic__description">{{topic.description}}</p>
+  </div>
+</section>
