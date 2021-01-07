@@ -16,3 +16,23 @@
     <p class="topic__description">{{topic.description}}</p>
   </div>
 </section>
+<section class="app__topic--details-comments" aria-label="comments" *ngIf="topic.comments">
+  <article class="app__topic--details__comment" *ngFor="let comment of topic.comments">
+    <div class="app__topic--details-content-wrapper-left-side">
+      <figure class="image-wrapper">
+        <img class="image" src="https://unsplash.it/100/100" alt="User Avatar">
+      </figure>
+      <div class="trophies">
+        <div>SV</div>
+        <div>SY</div>
+        <div>GZ</div>
+      </div>
+    </div>
+    <div class="app__topic--details-content-wrapper-middle-side">
+      <h1 [title]="comment.title + ' details'" class="topic__header">
+        {{comment.title}}
+      </h1>
+      <p class="topic__description">{{comment.content}}</p>
+    </div>
+  </article>
+</section>

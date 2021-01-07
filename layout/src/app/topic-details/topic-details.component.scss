@@ -41,4 +41,21 @@
       }
     }
   }
+
+  &--details__comments {
+    width: 60%;
+    max-width: 60%;
+    padding: 10px;
+    margin: 30px auto;
+    box-shadow: $box-shadow-intensity-medium;
+    background: $pure-white none;
+    border-radius: 5px;
+    @include flex-between;
+  }
+
+  &--details__comment {
+    background: $pure-white none;
+    margin: 20px auto;
+
+  }
 }

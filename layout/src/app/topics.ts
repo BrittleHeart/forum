@@ -20,6 +20,18 @@ export const topics: Topic[] = [
         content:
           "Well, that's quite nice. For me, this topic is really helpful",
       },
+      {
+        user: {
+          id: 2,
+          email: 'test1@test.com',
+          name: 'Test 1',
+          password: 'test2',
+        },
+        title: "Finally I've found normal forum",
+        content:
+          "I'm so grateful to the author of this forum. Finally " +
+          'I can make my dreams come true.. and become an software engineer',
+      },
     ],
   },
   {
