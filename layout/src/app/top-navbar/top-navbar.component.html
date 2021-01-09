@@ -36,8 +36,14 @@
       <a routerLink="/" class="brand" id="brand">Bartosz Pazdur Forum</a>
     </div>
     <ul class="links-list">
-      <li class="list-item">
+      <li class="list-item" *ngIf="!logged">
         <a routerLink="/sign-in" class="link">Sign in</a>
+      </li>
+      <li class="list-item" *ngIf="logged && currentUrl !== '/dashboard'">
+        <a routerLink="/dashboard" class="link">Dashboard</a>
+      </li>
+      <li class="list-item" *ngIf="logged">
+        <a (click)="logout()" class="link">logout</a>
       </li>
     </ul>
   </div>

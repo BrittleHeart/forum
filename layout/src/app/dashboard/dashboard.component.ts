@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  constructor(private readonly router: Router) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    if (!localStorage.getItem('token'))
+      await this.router.navigate(['/sign-in']);
   }
-
 }
