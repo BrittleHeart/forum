@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthErrorInterface } from '../interfaces/auth-error-interface';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AccessToken } from '../interfaces/access-token';
 
 @Component({
@@ -51,21 +51,29 @@ export class LoginComponent implements OnInit {
       password.value
     );
 
-    user.subscribe((token: AccessToken) =>
-      localStorage.setItem('token', token.access_token)
+    user.subscribe(
+      async (token: AccessToken) => {
+        localStorage.setItem('token', token.access_token);
+
+        if (!localStorage.getItem('token')) {
+          this.usersService.errors.push({
+            error: 'Login error',
+            message: 'Invalid credentials were passed',
+          });
+          this.bannerShown = true;
+          this.loginForm.reset({ email: email.value });
+          return;
+        }
+        this.bannerShown = false;
+        return await this.router.navigate(['dashboard']);
+      },
+      (error) => {
+        console.error(`Something went wrong ${error.message}`);
+      },
+      () => new Subscription().unsubscribe()
     );
 
-    if (!localStorage.getItem('token')) {
-      this.usersService.errors.push({
-        error: 'Login error',
-        message: 'Invalid credentials were passed',
-      });
-      this.bannerShown = true;
-      this.loginForm.reset({ email: email.value });
-      return;
-    }
-    this.bannerShown = false;
-    return await this.router.navigate(['dashboard']);
+    user.subscribe().unsubscribe();
   }
 
   showPassword() {
