@@ -1,26 +1,32 @@
 import { Injectable } from '@angular/core';
 import { CrudService } from '../externals/crud-service';
 import { User } from '../interfaces/user';
-import { users } from '../users';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AccessToken } from '../interfaces/access-token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService extends CrudService<User> {
-  private users: User[] = users;
-
-  constructor() {
+  constructor(private readonly httpClient: HttpClient) {
     super();
-    this.collection = this.users;
     this.errors = [];
   }
 
-  findUser(email: string): User {
-    return this.collection.find((user: User) => user.email === email);
-  }
-
-  authenticate(email: string, password: string): boolean {
-    const user = this.findUser(email);
-    return !(!user || password !== user.password);
+  /**
+   * Authenticate the user with params
+   *
+   * @param username
+   * @param password
+   * @returns Observable<AccessToken>
+   */
+  authenticate(username: string, password: string): Observable<AccessToken> {
+    const url: string = 'http://localhost:3000/auth/login';
+    return this.httpClient.post<AccessToken>(
+      url,
+      { username, password },
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    );
   }
 }
