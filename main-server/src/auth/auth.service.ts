@@ -29,7 +29,11 @@ export class AuthService {
     email: string,
     password: string,
   ): Promise<UserInterface | NotFoundException | null> {
-    const user = await this.userRepository.findOne({ email });
+    const user: UserInterface = await this.userRepository.findOne({
+      where: { email },
+    });
+
+    if (!user) throw new NotFoundException();
 
     const match = await compare(password, user.password);
 
