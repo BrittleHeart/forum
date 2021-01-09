@@ -5,7 +5,7 @@
     <h1 class="app__form--container--header">Sign-in</h1>
     <form
       [formGroup]="loginForm"
-      (ngSubmit)="login(); $event.stopPropagation()"
+      (keyup.enter)="login()"
       role="form"
       class="app__form--content">
       <div class="form-group">
@@ -41,7 +41,7 @@
           <input type="checkbox">
           Remember me
         </label>
-        <button type="submit" [disabled]="!loginForm.valid">Sign-in</button>
+        <button type="button" [disabled]="!loginForm.valid" (click)="login(); $event.stopPropagation()">Sign-in</button>
       </div>
 
       <div class="helpers">
