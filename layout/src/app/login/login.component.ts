@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthErrorInterface } from '../interfaces/auth-error-interface';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
+import { AccessToken } from '../interfaces/access-token';
 
 @Component({
   selector: 'app-login',
@@ -37,14 +39,23 @@ export class LoginComponent implements OnInit {
     this.errors = this.usersService.errors;
   }
 
+  /**
+   * Function that logs in the user with email and password from form values
+   *
+   * @return RequestRedirect | void
+   */
   async login(): Promise<boolean | void> {
     const { email, password } = this.loginForm.controls;
-    const user: boolean = this.usersService.authenticate(
+    const user: Observable<AccessToken> = this.usersService.authenticate(
       email.value,
       password.value
     );
 
-    if (!user) {
+    user.subscribe((token: AccessToken) =>
+      localStorage.setItem('token', token.access_token)
+    );
+
+    if (!localStorage.getItem('token')) {
       this.usersService.errors.push({
         error: 'Login error',
         message: 'Invalid credentials were passed',
